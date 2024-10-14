@@ -29,3 +29,48 @@ ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:
 `-w <wordlist>:FUZZ` select wordlist used to fuzzing. FUZZ is our label for words inside text file
 
 `-u < IP:PORT | ADRESS:PORT > / FUZZ` select adress on which we will be fuzzing. FUZZ is a placeholder for words inside wordlist file
+
+
+## Extension fuzzing
+
+```zsh
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/web-extensions.txt:FUZZ u http://SERVER_IP:PORT/blog/indexFUZZ
+```
+
+`-w <wordlist>:FUZZ` select wordlist used to fuzzing. FUZZ is our label for words inside text file
+
+`-u < IP:PORT | ADRESS:PORT > / FUZZ` select adress on which we will be fuzzing. FUZZ is a placeholder for words inside wordlist file
+
+## Page fuzzing
+
+```zsh
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/blog/FUZZ.php  -t 200 -fs 281 -e .php,.phps
+```
+
+`-w <wordlist>:FUZZ` select wordlist used to fuzzing. FUZZ is our label for words inside text file
+
+`-u < IP:PORT | ADRESS:PORT > / FUZZ` select adress on which we will be fuzzing. FUZZ is a placeholder for words inside wordlist file
+
+`-t 200` 200 Threads
+
+`-fs 281` filter by response size
+
+`-e .php,.phps` filter by extension
+
+
+## Recursive scanning 
+```zsh
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ -recursion -recursion-depth 1 -e .php -v
+```
+
+`-w <wordlist>:FUZZ` select wordlist used to fuzzing. FUZZ is our label for words inside text file
+
+`-u < IP:PORT | ADRESS:PORT > / FUZZ` select adress on which we will be fuzzing. FUZZ is a placeholder for words inside wordlist file
+
+`-e .php,.phps` filter by extension
+
+`recursion` Enable recursive scanning
+
+`-recursion-depth 2` Recursive scanning depth 
+
+`-v` Full verbose mode 
