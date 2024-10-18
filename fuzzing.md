@@ -57,6 +57,27 @@ ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:
 
 `-e .php,.phps` filter by extension
 
+## DNS records fuzzing
+
+### Sub-domain fuzzing
+```zsh
+ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://FUZZ.academy.htb/
+```
+
+
+### Vhost fuzzing
+```zsh
+ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://academy.htb:PORT/ -H 'Host: FUZZ.academy.htb'
+```
+
+`-H` Header flag
+
+## Parameter fuzzing
+
+```zsh
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php?FUZZ=key -fs xxx
+```
+
 
 ## Recursive scanning 
 ```zsh
