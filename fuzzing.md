@@ -85,9 +85,6 @@ ffuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ
 ffuf -w /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt:FUZZ-u http://admin.academy.htb:PORT/admin/admin.php?parameter=FUZZ -fs xxx
 ```
 
-ffuf -w  -u http://vhost.academy.htb:PORT/directory/page.ext -X POST -d "parameter=FUZZ" -H "Content-Type: application/x-www-form-urlencoded" -fs xxx
-
-
 ### POST Fuzzing
 
 ```zsh
