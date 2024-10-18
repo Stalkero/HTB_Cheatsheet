@@ -74,8 +74,28 @@ ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ 
 
 ## Parameter fuzzing
 
+
+### GET Fuzzing
 ```zsh
 ffuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php?FUZZ=key -fs xxx
+```
+
+### POST Fuzzing
+
+```zsh
+fuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx
+```
+
+
+### Send POST request
+
+```zsh
+curl http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=key' -H 'Content-Type: application/x-www-form-urlencoded'
+```
+
+### Value Fuzzing
+```zsh
+fuf -w ids.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=FUZZ' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx
 ```
 
 
@@ -95,3 +115,11 @@ ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:
 `-recursion-depth 2` Recursive scanning depth 
 
 `-v` Full verbose mode 
+
+
+
+## Useful
+### Generate id's
+```zsh
+for i in $(seq 1 1000); do echo $i >> ids.txt; done
+```
