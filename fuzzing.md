@@ -80,10 +80,24 @@ ffuf -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ 
 ffuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php?FUZZ=key -fs xxx
 ```
 
+### GET Fuzzing with known parameter name
+```zsh
+ffuf -w /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt:FUZZ-u http://admin.academy.htb:PORT/admin/admin.php?parameter=FUZZ -fs xxx
+```
+
+ffuf -w  -u http://vhost.academy.htb:PORT/directory/page.ext -X POST -d "parameter=FUZZ" -H "Content-Type: application/x-www-form-urlencoded" -fs xxx
+
+
 ### POST Fuzzing
 
 ```zsh
 fuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx
+```
+
+### POST Fuzzing with known parameter name
+
+```zsh
+fuf -w /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'parameter=FUZZ' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx
 ```
 
 
