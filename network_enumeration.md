@@ -151,16 +151,3 @@ sudo nmap <target> -p <port> -sS -Pn -n --disable-arp-ping --packet-trace -D RND
 `-e <interface>` Scan with that network interface
 
 `--source-port <53|PORT>` Scan with different source port (DNS proxying) 
-
-
-## Connecting to service
-
-### Connect to address with specific port
-```zsh
-ncat -nv IP:PORT
-```
-
-### Connect to address with specific filtered port
-```zsh
-ncat -nv --source-port <DNS_SERVER_PORT> IP:PORT
-```

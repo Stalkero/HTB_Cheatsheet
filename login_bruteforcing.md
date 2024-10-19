@@ -176,17 +176,6 @@ ___________
 
 ## Commands for testing access and some other useful ones
 
-### Connect with SSH
-
-```zsh
-ssh sshuser@<IP> -p PORT
-```
-
-### Connect to FTP
-
-```zsh
-ftp ftp://<FTP_USERNAME>:<FTPUSER_PASSWORD>@localhost
-```
 
 ### List active ports
 
@@ -198,12 +187,3 @@ netstat -tulpn | grep LISTEN
 nmap localhost
 ```
 
-### Connect to address with specific port
-```zsh
-ncat -nv IP:PORT
-```
-
-### Connect to address with specific filtered port
-```zsh
-ncat -nv --source-port <DNS_SERVER_PORT> IP:PORT
-```
