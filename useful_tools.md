@@ -72,6 +72,8 @@ ncat -nv --source-port <DNS_SERVER_PORT> IP:PORT
 
 `-v` Verbose
 
+`-l` listen mode
+
 
 ## whatweb
 Get some information about certain website
