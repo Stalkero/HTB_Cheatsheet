@@ -79,3 +79,10 @@ Get some information about certain website
 ```zsh
 whatweb IP --no-errors
 ```
+
+## searchsploit 
+Search for public vulnerabilities/exploits for any application
+
+```zsh
+searchsploit application <version>
+```
