@@ -80,9 +80,3 @@ Get some information about certain website
 whatweb IP --no-errors
 ```
 
-## searchsploit 
-Search for public vulnerabilities/exploits for any application
-
-```zsh
-searchsploit application <version>
-```
