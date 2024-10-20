@@ -12,6 +12,13 @@ Variants: `ssh`
 ```zsh
 ssh sshuser@<IP> -p PORT
 ```
+
+### Connect to shell with SSH using certificate
+```zsh
+ssh sshuser@<IP> -p PORT -i id_rsa
+```
+
+
 ## ftp 
 Connect to file transfer protocol server
 
