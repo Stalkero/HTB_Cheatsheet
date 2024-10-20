@@ -25,6 +25,28 @@ ftp ftp://<FTP_USERNAME>:<FTPUSER_PASSWORD>@localhost
 
 
 
+## smbclient
+### Connect to smb server and list available shares
+
+```zsh
+smbclient -N -L \\\\IP
+```
+### Connect to smb share as user
+
+```zsh
+smbclient -U bob -L \\\\IP\sharename
+```
+
+
+
+
+`-U bob` as user bob
+
+`-N` suppresses the password prompt
+
+`-L`  retrieve a list of available shares 
+
+
 ## netcat
 Connect to ip and port just as easy as it sounds
 
@@ -49,3 +71,11 @@ ncat -nv --source-port <DNS_SERVER_PORT> IP:PORT
 `-n` Do not resolve hostnames via DNS
 
 `-v` Verbose
+
+
+## whatweb
+Get some information about certain website
+
+```zsh
+whatweb IP --no-errors
+```
